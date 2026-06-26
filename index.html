@@ -1,16 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <script 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corpowid Test Page</title>
+  <script
     defer
     src="https://cdn.corpowid.com/3.0.11/corpowid.js"
     integrity="sha384-SgsMt3vGr76boeS7uTJoHOD6i8cnMD+DA9iKqZuJ8UxzIHYjrYMwt3IhdwRAll/8"
     crossorigin="anonymous"
     data-account="0229a183-0e48-40d8-bc72-65c24c8f347c">
   </script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; background: #fff; color: #111; }
+    h1 { color: #1a1a2e; }
+    h2 { color: #16213e; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+    .card { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; }
+    img { max-width: 100%; border-radius: 8px; margin: 10px 0; }
+    a { color: #0066cc; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #1a1a2e; color: white; }
+    button { padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+    .btn-primary { background: #0066cc; color: white; }
+    .btn-secondary { background: #666; color: white; }
+    small { color: #888; font-size: 12px; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin: 15px 0; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    blockquote { border-left: 4px solid #0066cc; margin: 20px 0; padding: 10px 20px; background: #f0f4ff; font-style: italic; }
+    .low-contrast { color: #aaa; background: #bbb; padding: 10px; border-radius: 5px; }
+  </style>
 </head>
 <body>
-  <h1>Corpowid Test</h1>
-  <p>Some sample text to test the accessibility widget.</p>
+
+  <h1>Corpowid Accessibility Widget Test Page</h1>
+  <p>This page contains a wide range of content types to thoroughly test how the Corpowid widget handles real-world scenarios.</p>
+
+  <nav aria-label="Page sections">
+    <a href="#text-section">Text</a> |
+    <a href="#image-section">Images</a> |
+    <a href="#video-section">Videos</a> |
+    <a href="#table-section">Table</a> |
+    <a href="#form-section">Form</a> |
+    <a href="#accessibility-section">Accessibility Issues</a>
+  </nav>
+
+  <!-- Text Section -->
+  <div class="card" id="text-section">
+    <h2>Text Content</h2>
+    <p>This is a standard paragraph testing how the widget handles font size, spacing, and contrast adjustments. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <p>A second paragraph with a <a href="#">hyperlink</a> and <strong>bold text</strong> and <em>italic text</em> to test how the widget renders different text styles.</p>
+    <blockquote>
+      "Accessibility is not a feature, it is a social trend." — Antonio Santos
+    </blockquote>
+    <p><small>This is small text at 12px — often hard to read without accessibility tools enabled.</small></p>
+    <h3>A Subheading</h3>
+    <p>More content under a subheading to test heading navigation, which screen readers rely on heavily.</p>
+    <ul>
+      <li>List item one</li>
+      <li>List item two</li>
+      <li>List item three with a <a href="#">nested link</a></li>
+    </ul>
+  </div>
+
+  <!-- Image Section -->
+  <div class="card" id="image-section">
+    <h2>Images</h2>
+    <p>Image with descriptive alt text (accessible):</p>
+    <img src="https://picsum.photos/800/300?random=1" alt="A wide landscape photograph used for accessibility testing purposes">
+
+    <p>Image with empty alt text (decorative — acceptable for purely decorative images):</p>
+    <img src="https://picsum.photos/800/300?random=2" alt="">
+
+    <p>Image with no alt text at all (inaccessible — widget should flag or fix this):</p>
+    <img src="https://picsum.photos/800/300?random=3">
+
+    <h3>Image Gallery</h3>
+    <p>A grid of images to test how the widget handles multiple images at once:</p>
+    <div class="gallery">
+      <img src="https://picsum.photos/300/200?random=4" alt="Gallery image one">
+      <img src="https://picsum.photos/300/200?random=5" alt="Gallery image two">
+      <img src="https://picsum.photos/300/200?random=6">
+      <img src="https://picsum.photos/300/200?random=7" alt="Gallery image four">
+      <img src="https://picsum.photos/300/200?random=8">
+      <img src="https://picsum.photos/300/200?random=9" alt="Gallery image six">
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div class="card" id="video-section">
+    <h2>Videos</h2>
+    <p>YouTube video with captions available — test how the widget interacts with embedded video:</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/20SHvU2PKsM"
+        title="Web accessibility introduction video by Google"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <p>A second video to test multiple embeds on the same page:</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="Example video embed for accessibility widget testing"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="card" id="table-section">
+    <h2>Data Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Free Plan</th>
+          <th>Paid From</th>
+          <th>AI Features</th>
+          <th>Mobile SDK</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WelcomingWeb</td>
+          <td>Yes</td>
+          <td>$19/month</td>
+          <td>Pro plan</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Corpowid</td>
+          <td>Yes</td>
+          <td>$39/month</td>
+          <td>Custom plan</td>
+          <td>Custom plan</td>
+        </tr>
+        <tr>
+          <td>Other</td>
+          <td>Varies</td>
+          <td>Varies</td>
+          <td>Varies</td>
+          <td>Varies</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Form Section -->
+  <div class="card" id="form-section">
+    <h2>Form</h2>
+    <p>A form without ARIA labels to test how the widget handles form accessibility:</p>
+    <label for="name">Full Name</label><br>
+    <input type="text" id="name" placeholder="Enter your name"><br><br>
+    <label for="email">Email Address</label><br>
+    <input type="email" id="email" placeholder="Enter your email"><br><br>
+    <input type="text" placeholder="Field with no label — inaccessible"><br><br>
+    <label for="message">Message</label><br>
+    <textarea id="message" rows="4" cols="50" placeholder="Type your message here"></textarea><br><br>
+    <button class="btn-primary">Submit</button>
+    <button class="btn-secondary">Cancel</button>
+  </div>
+
+  <!-- Deliberate Accessibility Issues Section -->
+  <div class="card" id="accessibility-section">
+    <h2>Deliberate Accessibility Issues</h2>
+    <p>This section contains intentional issues to see how the widget detects and handles them.</p>
+
+    <p>Low contrast text (hard to read):</p>
+    <div class="low-contrast">This text has very low contrast between foreground and background.</div>
+
+    <p>A link with no descriptive text:</p>
+    <a href="#">Click here</a>
+
+    <p>A button with no label:</p>
+    <button style="background:#0066cc; color:white; padding:10px 20px; border:none; border-radius:5px;">???</button>
+
+    <p>An image used as a link with no alt text:</p>
+    <a href="#">
+      <img src="https://picsum.photos/200/100?random=10">
+    </a>
+  </div>
+
 </body>
 </html>
